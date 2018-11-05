@@ -1,0 +1,12 @@
+<div>
+  <h2 mat-dialog-title>API Key</h2>
+  <mat-dialog-content>
+    Enter an IGDB API key :
+    <mat-form-field>
+      <input matInput [(ngModel)]="apiKey">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">OK</button>
+  </mat-dialog-actions>
+</div>
