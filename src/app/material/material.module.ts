@@ -9,6 +9,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -20,7 +21,8 @@ import {MatInputModule} from '@angular/material/input';
     MatToolbarModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   exports: [
     FlexLayoutModule,
@@ -29,7 +31,8 @@ import {MatInputModule} from '@angular/material/input';
     MatToolbarModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [
     // {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}

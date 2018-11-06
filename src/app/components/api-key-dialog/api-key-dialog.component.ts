@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { NgModel } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
 @Component({

@@ -43,6 +43,8 @@ export class ApikeyComponent implements OnInit {
       this.errorMessage = 'Invalid API Key';
 
     } else {
+      this.hasApiKey = true;
+      this.errorMessage = '';
       this.apiKey = apiKey;
     }
   }

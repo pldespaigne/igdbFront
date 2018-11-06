@@ -1,5 +1,12 @@
-<button mat-button (click)="openApiKeyDialog()">
-  <span *ngIf="hasApiKey; then displayApiKey; else displayError"></span>
-  <ng-template #displayApiKey>API Key : {{apiKey}}</ng-template>
-  <ng-template #displayError>⚠️ {{errorMessage}}</ng-template>
-</button>
+
+<span *ngIf="hasApiKey; then displayApiKey; else displayError"></span>
+<ng-template #displayApiKey>
+  <button mat-raised-button (click)="openApiKeyDialog()">
+    API Key : {{apiKey}}
+  </button>
+</ng-template>
+<ng-template #displayError>
+  <button mat-raised-button (click)="openApiKeyDialog()" class="color-error">
+    ⚠️ {{errorMessage}}
+  </button>
+</ng-template>
