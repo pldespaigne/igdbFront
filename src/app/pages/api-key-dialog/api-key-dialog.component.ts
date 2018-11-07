@@ -8,15 +8,18 @@ import { MatDialogRef } from '@angular/material';
 })
 export class ApiKeyDialogComponent implements OnInit {
 
-  apiKey: string
+  apikey: string
 
   constructor(public dialogRef: MatDialogRef<ApiKeyDialogComponent>) { }
 
   ngOnInit() {
-    this.apiKey = '';
+    this.apikey = '';
   }
 
   closeDialog(): void {
-    this.dialogRef.close(this.apiKey);
+    if(this.apikey.length == 32) {
+      console.log(this.apikey);
+      this.dialogRef.close(this.apikey);
+    }
   }
 }

@@ -1,6 +1,9 @@
 <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
   <span>igdbFront 🎮</span>
-  <app-apikey></app-apikey>
+  <span>
+    <app-apikey [apikey]="apikey$ | async"></app-apikey>
+    <button mat-button (click)="openApiKeyDialog()"><mat-icon>edit</mat-icon></button>
+  </span>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

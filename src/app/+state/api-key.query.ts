@@ -9,4 +9,8 @@ export class ApiKeyQuery extends Query<ApiKeyState> {
     super(store);
   }
 
+
+  get apikey$() {
+    return this.select(store => store.key);
+  }
 }

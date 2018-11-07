@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { ApiKeyQuery } from 'src/app/state';
+import { ApiKeyQuery } from 'src/app/+state';
 
 @Component({
   selector: 'app-home',
@@ -9,36 +9,36 @@ import { ApiKeyQuery } from 'src/app/state';
 })
 export class HomeComponent implements OnInit {
 
-  hasApiKey: boolean
-  apiKey: string
+  // hasApiKey: boolean
+  @Input() apikey: string
 
-  constructor(private apiKeyQuery: ApiKeyQuery) { }
+  constructor(private query: ApiKeyQuery) { }
 
   ngOnInit() {
 
-    this.hasApiKey = false;
+    // this.hasApiKey = false;
 
-    const apiKeyObserver = {
-      next: (apiKey) => this.check(apiKey.key),
-      error: (err) => console.error('api key error : ', err),
-      complete: () => console.log('api key observer complete !')
-    };
-    this.apiKeyQuery.select().subscribe(apiKeyObserver);
+    // const apiKeyObserver = {
+    //   next: (apiKey) => this.check(apiKey.key),
+    //   error: (err) => console.error('api key error : ', err),
+    //   complete: () => console.log('api key observer complete !')
+    // };
+    // this.apiKeyQuery.select().subscribe(apiKeyObserver);
   }
 
-  check(apiKey: string) {
+  // check(apiKey: string) {
 
-    if(apiKey.length == 0) {
-      console.error('No API key !');
-      this.hasApiKey = false;
+  //   if(apiKey.length == 0) {
+  //     console.error('No API key !');
+  //     this.hasApiKey = false;
 
-    } else if (apiKey.length != 32) {
-      this.hasApiKey = false;
+  //   } else if (apiKey.length != 32) {
+  //     this.hasApiKey = false;
 
-    } else {
-      this.hasApiKey = true;
-      this.apiKey = apiKey;
-    }
-  }
+  //   } else {
+  //     this.hasApiKey = true;
+  //     this.apiKey = apiKey;
+  //   }
+  // }
 
 }

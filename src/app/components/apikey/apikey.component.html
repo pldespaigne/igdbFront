@@ -1,12 +1,12 @@
-
-<span *ngIf="hasApiKey; then displayApiKey; else displayError"></span>
-<ng-template #displayApiKey>
-  <button mat-raised-button (click)="openApiKeyDialog()">
-    API Key : {{apiKey}}
+<span *ngIf="apikey !== null">
+  <span *ngIf="display" title="API key">{{apikey}}</span>
+  <button mat-button (click)="toggleDisplay()" title="show/hide API key">
+    <span *ngIf="display; then hideIcon; else showIcon"></span>
+    <ng-template #hideIcon>
+      <mat-icon>visibility_off</mat-icon>
+    </ng-template>
+    <ng-template #showIcon>
+      <mat-icon>visibility</mat-icon>
+    </ng-template>
   </button>
-</ng-template>
-<ng-template #displayError>
-  <button mat-raised-button (click)="openApiKeyDialog()" class="color-error">
-    ⚠️ {{errorMessage}}
-  </button>
-</ng-template>
+</span>

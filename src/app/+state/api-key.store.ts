@@ -7,7 +7,7 @@ export interface ApiKeyState {
 
 export function createInitialState(): ApiKeyState {
   return {
-    key: localStorage.getItem('apiKey') || ''
+    key: null
   };
 }
 
