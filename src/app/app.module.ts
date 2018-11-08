@@ -11,7 +11,7 @@ import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { HomeComponent } from './pages/home/home.component';
 import { ApikeyComponent } from './components/apikey/apikey.component';
 import { ApiKeyDialogComponent } from './pages/api-key-dialog/api-key-dialog.component';
-import { IgdbService } from './igdb/igdb.service';
+import { IgdbService } from './+igdb/igdb.service';
 
 @NgModule({
   declarations: [

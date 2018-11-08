@@ -33,13 +33,13 @@ export class IgdbService {
 
   getGame$(id: number): Observable<Game> {
     return this.http.get<Game>(this.url + '/games/' + id, this.getOptions()).pipe(map(res => {
-      console.log(res)
+      // console.log(res[0])
       return {
         id: res[0]['id'],
         url: res[0]['url'],
         name: res[0]['name'],
         summary: res[0]['summary'] ? res[0]['summary'] : '',
-        cover: res[0]['cover'] ? res['cover']['cloudinary_id'] : ''
+        cover: res[0]['cover'] ? res[0]['cover']['cloudinary_id'] : ''
       }
     }));
   }

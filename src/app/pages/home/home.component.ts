@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
           this.isLoading = false;
           this.game = game;
           console.log(game);
-          console.log(game.id);
-          console.log(game.name);
+          // console.log(game.id);
+          // console.log(game.name);
           // console.log(game.cover);
         });
       },
