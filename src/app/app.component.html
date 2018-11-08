@@ -1,12 +1,23 @@
 <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
-  <span>igdbFront 🎮</span>
+  <a routerLink="" class="no-underline">igdbFront 🎮</a>
   <span>
     <app-apikey [apikey]="apikey$ | async"></app-apikey>
     <button mat-button (click)="openApiKeyDialog()"><mat-icon>edit</mat-icon></button>
   </span>
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<span *ngIf="isApiok$ | async; then displayContent; else displayError"></span>
+<ng-template #displayContent>
+  <router-outlet></router-outlet>
+</ng-template>
+<ng-template #displayError>
+  <div fxLayout="column">
+    <mat-card fxFlexAlign="center"  fxLayout="column">
+      <mat-card-title>⚠️ Please enter a valid API Key !</mat-card-title>
+      <mat-card-content  fxFlexAlign="center">Click on the <mat-icon>edit</mat-icon> at the top right</mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>
 
 <footer fxLayout="row" fxLayoutAlign="center center">
   <p>made with ❤️ by <a href="https://twitter.com/pldespaigne" target="_blank" rel="noopener">Pierre-Louis Despaigne</a></p>

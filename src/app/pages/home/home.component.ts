@@ -12,7 +12,7 @@ import { Count, Game } from 'src/app/models/models';
 })
 export class HomeComponent implements OnInit {
 
-  isApiok$: Observable<boolean>
+  // isApiok$: Observable<boolean>
   isLoading: boolean
   canPrevious: boolean
   canNext: boolean
@@ -25,14 +25,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     // this.apikey$ = this.query.apikey$;
-    this.isApiok$ = this.query.isApiok$;
-    this.isApiok$.subscribe(
-      (isOk) => {
-        if(isOk){
+    // this.isApiok$ = this.query.isApiok$;
+    // this.isApiok$.subscribe(
+    //   (isOk) => {
+    //     if(isOk){
           this.getGamesCount();
-        }
-      }
-    );
+    //     }
+    //   }
+    // );
   }
 
   getGamesCount() {

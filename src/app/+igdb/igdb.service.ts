@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { ApiKeyQuery } from '../+state';
+import { ApiKeyQuery, ApiKeyStore, ApiKeyService } from '../+state';
 
 import { Count, Game } from '../models/models';
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ export class IgdbService {
 
   url: string
 
-  constructor(private http: HttpClient, private query: ApiKeyQuery) {
+  constructor(private http: HttpClient, private query: ApiKeyQuery, private api: ApiKeyService) {
     this.url = environment.api_url;
   }
 
@@ -34,13 +34,16 @@ export class IgdbService {
   getGame$(id: number): Observable<Game> {
     return this.http.get<Game>(this.url + '/games/' + id, this.getOptions()).pipe(map(res => {
       // console.log(res[0])
-      return {
+      let game: Game;
+      game = {
         id: res[0]['id'],
         url: res[0]['url'],
         name: res[0]['name'],
         summary: res[0]['summary'] ? res[0]['summary'] : '',
         cover: res[0]['cover'] ? res[0]['cover']['cloudinary_id'] : ''
-      }
+      };
+      this.api.setGame(game);
+      return game;
     }));
   }
 }

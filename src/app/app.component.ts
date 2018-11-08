@@ -13,11 +13,20 @@ import { ApiKeyDialogComponent } from './pages/api-key-dialog/api-key-dialog.com
 })
 export class AppComponent {
   apikey$: Observable<string>
+  isApiok$: Observable<boolean>
 
   constructor(private query: ApiKeyQuery, private service: ApiKeyService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.apikey$ = this.query.apikey$;
+    this.isApiok$ = this.query.isApiok$;
+    // this.isApiok$.subscribe(
+    //   (isOk) => {
+    //     if(isOk){
+    //       this.getGamesCount();
+    //     }
+    //   }
+    // );
     if(this.query.getSnapshot().key === null) this.openApiKeyDialog()
   }
 

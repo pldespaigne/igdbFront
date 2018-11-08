@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Game } from 'src/app/models/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-thumb',
@@ -17,12 +18,12 @@ export class GameThumbComponent implements OnInit {
   imageUrl: string
   gameObj: Game
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() { }
 
   goToGame() {
-    console.log('click')
+    this.router.navigateByUrl('game/' + this.gameObj.id);
   }
 
 }

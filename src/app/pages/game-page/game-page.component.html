@@ -1,0 +1,18 @@
+
+<a mat-button routerLink=""><mat-icon>keyboard_backspace</mat-icon></a>
+
+<span *ngIf="game; then displayGame; else displayLoading"></span>
+
+<ng-template #displayLoading>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-template #displayGame>
+  <div fxLayout="column">
+    <span fxFlexAlign="center" fxLayout="row" fxLayoutAlign="center center">
+      <h1>{{game.name}}</h1>
+      <p>#{{game.id}}</p>
+    </span>
+    <p fxFlexAlign="center">{{game.summary}}</p>
+  </div>
+</ng-template>
