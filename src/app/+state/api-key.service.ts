@@ -9,7 +9,7 @@ export class ApiKeyService {
   }
 
   setApiKey(apikey: string) {
-    if(apikey.length == 32)this.apiKeyStore.update({key: apikey})
+    if(apikey.length == 32)this.apiKeyStore.update({key: apikey, ok: true})
   }
 
 }

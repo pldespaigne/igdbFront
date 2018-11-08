@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://api-endpoint.igdb.com/'
+  api_url: 'https://cors-anywhere.herokuapp.com/https://api-endpoint.igdb.com/'
 };
 
 /*

@@ -13,4 +13,8 @@ export class ApiKeyQuery extends Query<ApiKeyState> {
   get apikey$() {
     return this.select(store => store.key);
   }
+
+  get isApiok$() {
+    return this.select(store => store.ok);
+  }
 }

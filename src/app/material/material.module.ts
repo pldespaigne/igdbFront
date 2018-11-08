@@ -11,6 +11,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [],
@@ -24,7 +25,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     FlexLayoutModule,
@@ -35,7 +37,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     // {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}

@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { ApiKeyQuery } from 'src/app/+state';
+import { Observable } from 'rxjs';
+import { IgdbService } from 'src/app/+igdb/igdb.service';
+import { Count, Game } from 'src/app/models/models';
 
 @Component({
   selector: 'app-home',
@@ -9,36 +12,44 @@ import { ApiKeyQuery } from 'src/app/+state';
 })
 export class HomeComponent implements OnInit {
 
-  // hasApiKey: boolean
-  @Input() apikey: string
+  isApiok$: Observable<boolean>
+  isLoading: boolean
+  count: number
+  game: Game
+  
 
-  constructor(private query: ApiKeyQuery) { }
+  constructor(private query: ApiKeyQuery, private api: IgdbService) { }
 
   ngOnInit() {
-
-    // this.hasApiKey = false;
-
-    // const apiKeyObserver = {
-    //   next: (apiKey) => this.check(apiKey.key),
-    //   error: (err) => console.error('api key error : ', err),
-    //   complete: () => console.log('api key observer complete !')
-    // };
-    // this.apiKeyQuery.select().subscribe(apiKeyObserver);
+    this.isLoading = true;
+    // this.apikey$ = this.query.apikey$;
+    this.isApiok$ = this.query.isApiok$;
+    this.isApiok$.subscribe(
+      (isOk) => {
+        if(isOk){
+          this.getGamesCount();
+        }
+      }
+    );
   }
 
-  // check(apiKey: string) {
-
-  //   if(apiKey.length == 0) {
-  //     console.error('No API key !');
-  //     this.hasApiKey = false;
-
-  //   } else if (apiKey.length != 32) {
-  //     this.hasApiKey = false;
-
-  //   } else {
-  //     this.hasApiKey = true;
-  //     this.apiKey = apiKey;
-  //   }
-  // }
+  getGamesCount() {
+    this.api.gamesCount$.subscribe(
+      (count: Count) => {
+        // console.log(data)
+        // this.isLoading = false;
+        this.count = count.count;
+        this.api.getGame$(Math.floor(Math.random() * this.count)).subscribe((game: Game) => {
+          this.isLoading = false;
+          this.game = game;
+          console.log(game);
+          console.log(game.id);
+          console.log(game.name);
+          // console.log(game.cover);
+        });
+      },
+      (err) => console.error(err)
+    );
+  }
 
 }

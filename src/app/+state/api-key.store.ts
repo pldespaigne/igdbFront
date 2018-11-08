@@ -3,11 +3,13 @@ import { Store, StoreConfig } from '@datorama/akita';
 
 export interface ApiKeyState {
   key: string;
+  ok: boolean;
 }
 
 export function createInitialState(): ApiKeyState {
   return {
-    key: null
+    key: null,
+    ok: false
   };
 }
 
