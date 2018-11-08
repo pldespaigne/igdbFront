@@ -12,13 +12,15 @@ import { HomeComponent } from './pages/home/home.component';
 import { ApikeyComponent } from './components/apikey/apikey.component';
 import { ApiKeyDialogComponent } from './pages/api-key-dialog/api-key-dialog.component';
 import { IgdbService } from './+igdb/igdb.service';
+import { GameThumbComponent } from './components/game-thumb/game-thumb.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ApikeyComponent,
-    ApiKeyDialogComponent
+    ApiKeyDialogComponent,
+    GameThumbComponent
   ],
   imports: [
     BrowserModule,

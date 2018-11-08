@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
 
   isApiok$: Observable<boolean>
   isLoading: boolean
+  canPrevious: boolean
+  canNext: boolean
   count: number
   game: Game
   
@@ -39,17 +41,26 @@ export class HomeComponent implements OnInit {
         // console.log(data)
         // this.isLoading = false;
         this.count = count.count;
-        this.api.getGame$(Math.floor(Math.random() * this.count)).subscribe((game: Game) => {
-          this.isLoading = false;
-          this.game = game;
-          console.log(game);
-          // console.log(game.id);
-          // console.log(game.name);
-          // console.log(game.cover);
-        });
+        this.getGame(Math.floor(Math.random() * this.count));
       },
       (err) => console.error(err)
     );
+  }
+
+  getGame(id: number) {
+    this.isLoading = true
+    this.canPrevious = true;
+    this.canNext = true;
+    if(id == 0) this.canPrevious = false;
+    if(id == this.count) this.canNext = false;
+    this.api.getGame$(id).subscribe((game: Game) => {
+      this.isLoading = false;
+      this.game = game;
+      console.log(game);
+      // console.log(game.id);
+      // console.log(game.name);
+      // console.log(game.cover);
+    });
   }
 
 }

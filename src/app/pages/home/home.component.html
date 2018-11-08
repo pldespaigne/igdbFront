@@ -2,21 +2,25 @@
   <h1 fxFlexAlign="center"> Welcome to igdbFront 🎮</h1>
   <h2 fxFlexAlign="center">The web app made for exploring the <a href="https://igdb.github.io/api/" target="_blank" rel="noopener">igdb</a> API</h2>
 
-  <span *ngIf="isApiok$ | async; then displayGames; else displayError"></span>
+  <span *ngIf="isApiok$ | async; then displayContent; else displayError"></span>
 
-  <ng-template #displayGames>
-    <span *ngIf="isLoading; then displayLoading; else displayGames"></span>
+  <ng-template #displayContent>
+    <p *ngIf="count">Start exploring : {{count}} games</p>
 
-    <ng-template #displayLoading>
-        <mat-spinner></mat-spinner>
-    </ng-template>
+    <span fxLayout="row" fxLayoutAlign="space-evenly center">
+        <button mat-button [disabled]="!canPrevious" (click)="getGame(game.id - 1)"><mat-icon>keyboard_arrow_left</mat-icon></button>
 
-    <ng-template #displayGames>
-      <p>Start exploring : {{count}} games</p>
-      <span *ngIf="game">
-        <p>{{game.name}} (#{{game.id}})</p>
-      </span>
-    </ng-template>
+        <span *ngIf="isLoading; then displayLoading; else displayGames"></span>
+        <ng-template #displayLoading>
+            <mat-spinner></mat-spinner>
+        </ng-template>
+    
+        <ng-template #displayGames>
+            <app-game-thumb *ngIf="game" [game]="game"></app-game-thumb>
+        </ng-template>
+
+        <button mat-button [disabled]="!canNext" (click)="getGame(game.id + 1)"><mat-icon>keyboard_arrow_right</mat-icon></button>
+    </span>
 
   </ng-template>
 
