@@ -12,7 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ApikeyComponent } from './components/apikey/apikey.component';
 import { ApiKeyDialogComponent } from './pages/api-key-dialog/api-key-dialog.component';
 import { GamePageComponent } from './pages/game-page/game-page.component';
-import { IgdbService } from './+igdb/igdb.service';
+// import { IgdbService } from './+igdb/igdb.service';
 import { GameThumbComponent } from './components/game-thumb/game-thumb.component';
 
 @NgModule({
@@ -35,7 +35,7 @@ import { GameThumbComponent } from './components/game-thumb/game-thumb.component
   entryComponents: [
     ApiKeyDialogComponent
   ],
-  providers: [IgdbService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

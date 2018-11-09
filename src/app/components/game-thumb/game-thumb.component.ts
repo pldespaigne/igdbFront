@@ -9,21 +9,14 @@ import { Router } from '@angular/router';
 })
 export class GameThumbComponent implements OnInit {
 
-  @Input() set game(game: Game) {
-    if(game.cover !== '') this.imageUrl = 'https://images.igdb.com/igdb/image/upload/t_720p/' + game.cover + '.jpg';
-    else this.imageUrl = 'https://cdn4.iconfinder.com/data/icons/flatified/512/photos.png';
-
-    this.gameObj = game;
-  }
-  imageUrl: string
-  gameObj: Game
+  @Input() game: Game
 
   constructor(private router: Router) { }
 
   ngOnInit() { }
 
   goToGame() {
-    this.router.navigateByUrl('game/' + this.gameObj.id);
+    this.router.navigateByUrl('game/' + this.game.id);
   }
 
 }

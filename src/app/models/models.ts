@@ -6,7 +6,3 @@ export interface Game {
     summary: string;
     cover: string;
 }
-
-export interface Count {
-    count: number;
-}

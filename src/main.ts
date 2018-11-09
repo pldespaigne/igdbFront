@@ -6,9 +6,14 @@ import { environment } from './environments/environment';
 
 import 'hammerjs';
 
+import { enableAkitaProdMode, persistState } from '@datorama/akita';
+
 if (environment.production) {
   enableProdMode();
+  enableAkitaProdMode();
 }
+
+persistState();
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

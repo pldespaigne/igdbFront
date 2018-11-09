@@ -1,10 +1,10 @@
 
 <mat-card class="max-w-500" (click)=goToGame() class="cursor-pointer">
   <mat-card-header>
-    <mat-card-title>{{gameObj.name}}</mat-card-title>
+    <mat-card-title>{{game.name}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image [src]="imageUrl">
+  <img mat-card-image [src]="game.cover">
   <mat-card-content fxLayout="row" fxLayoutAlign="center center">
-      <p>#{{gameObj.id}}</p>
+      <p>#{{game.id}}</p>
   </mat-card-content>
 </mat-card>

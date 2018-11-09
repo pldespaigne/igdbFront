@@ -1,18 +1,21 @@
 
 <a mat-button routerLink=""><mat-icon>keyboard_backspace</mat-icon></a>
 
-<span *ngIf="game; then displayGame; else displayLoading"></span>
+<div fxLayout="column">
+  <span *ngIf="isLoading; then displayLoading; else displayGame"></span>
 
-<ng-template #displayLoading>
-  <mat-spinner></mat-spinner>
-</ng-template>
+  <ng-template #displayLoading>
+    <mat-spinner fxFlexAlign="center"></mat-spinner>
+  </ng-template>
 
-<ng-template #displayGame>
-  <div fxLayout="column">
+  <ng-template #displayGame>
     <span fxFlexAlign="center" fxLayout="row" fxLayoutAlign="center center">
       <h1>{{game.name}}</h1>
       <p>#{{game.id}}</p>
     </span>
-    <p fxFlexAlign="center">{{game.summary}}</p>
-  </div>
-</ng-template>
+    <div fxFlexAlign="center" fxLayout="row" fxLayoutAlign="space-evenly start">
+      <p fxFlex="50%">{{game.summary}}</p>
+      <img fxFlex="50%" [src]="game.cover">
+    </div>
+  </ng-template>
+</div>

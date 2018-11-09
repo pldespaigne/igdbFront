@@ -1,3 +1,3 @@
-export * from './api-key.query';
-export * from './api-key.store';
-export * from './api-key.service';
+export * from './igdb.query';
+export * from './igdb.store';
+export * from './igdb.service';

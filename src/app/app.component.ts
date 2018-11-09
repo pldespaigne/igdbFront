@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ApiKeyQuery, ApiKeyService } from './+state';
+import { IgdbQuery } from './+state/igdb.query';
+import { IgdbService } from './+state/igdb.service';
 
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ApiKeyDialogComponent } from './pages/api-key-dialog/api-key-dialog.component';
@@ -15,7 +16,7 @@ export class AppComponent {
   apikey$: Observable<string>
   isApiok$: Observable<boolean>
 
-  constructor(private query: ApiKeyQuery, private service: ApiKeyService, private dialog: MatDialog) {}
+  constructor(private query: IgdbQuery, private service: IgdbService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.apikey$ = this.query.apikey$;
@@ -38,7 +39,7 @@ export class AppComponent {
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed :', result);
         if(result != undefined) {
-          this.service.setApiKey(result);
+          this.service.setApikey(result);
         }
       });
     })

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Game } from 'src/app/models/models';
-import { ApiKeyQuery } from 'src/app/+state';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { IgdbQuery } from 'src/app/+state/igdb.query';
+import { ActivatedRoute } from '@angular/router';
+import { IgdbService } from 'src/app/+state';
 
 @Component({
   selector: 'app-game-page',
@@ -12,19 +13,35 @@ export class GamePageComponent implements OnInit {
 
   game: Game
   routeId: number
+  isLoading: boolean
 
-  constructor(private route: ActivatedRoute, private query: ApiKeyQuery) { }
+  constructor(private route: ActivatedRoute, private query: IgdbQuery, private api: IgdbService) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.route.params.subscribe(params => this.routeId = params['id']);
     this.game = this.query.getSnapshot().game;
 
-    if(!this.game)console.log('no game, need to query ', this.routeId)
-    if(this.game && this.game.id != this.routeId)console.log('wrong game in store, need to query ', this.routeId);
-    
-    if(this.game && this.game.id == this.routeId)console.log(this.game);
-    // else //TODO make the query
-     
+    if(!this.game){
+      console.log('no game, need to query ', this.routeId)
+      this.loadGame();
+    } else if(this.game && this.game.id != this.routeId){
+      console.log('wrong game in store, need to query ', this.routeId);
+      this.loadGame();
+    } else if(this.game && this.game.id == this.routeId){
+      console.log(this.game);
+      this.isLoading = false;
+    }
   }
 
+  loadGame() {
+    this.isLoading = true;
+    this.api.getGame(this.routeId);
+    this.query.storedGame$.subscribe(
+      game => {
+        this.game = game
+        if(game.id == this.routeId)this.isLoading = false
+      }
+    )
+  }
 }
