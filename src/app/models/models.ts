@@ -5,4 +5,5 @@ export interface Game {
     name: string;
     summary: string;
     cover: string;
+    platforms: string[];
 }

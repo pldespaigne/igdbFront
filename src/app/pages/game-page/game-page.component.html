@@ -14,7 +14,10 @@
       <p>#{{game.id}}</p>
     </span>
     <div fxFlexAlign="center" fxLayout="row" fxLayoutAlign="space-evenly start">
-      <p fxFlex="50%">{{game.summary}}</p>
+      <div fxFlex="50%">
+        <p>{{game.summary}}</p>
+        <span *ngFor="let platform of game.platforms">{{platform}}, </span>
+      </div>
       <img fxFlex="50%" [src]="game.cover">
     </div>
   </ng-template>

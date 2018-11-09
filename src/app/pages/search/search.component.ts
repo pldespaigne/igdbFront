@@ -16,12 +16,14 @@ export class SearchComponent implements OnInit {
   search$: Observable<number[]>
   games: Game[]
   offset: number
+  isLoading: boolean
   canPrevious: boolean
   canNext: boolean
 
   constructor(private route: ActivatedRoute, private api: IgdbService) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.canPrevious = false;
     this.canNext = false;
     this.offset = 0;
@@ -33,6 +35,7 @@ export class SearchComponent implements OnInit {
   }
 
   getSearch(search: string, offset: number){
+    this.isLoading = true;
     this.canPrevious = true;
     this.canNext = true;
     if(offset <= 0) {
@@ -46,13 +49,16 @@ export class SearchComponent implements OnInit {
     this.search = search;
     this.games = [];
     this.search$ = this.api.getSearch$(search, offset);
-      this.search$.subscribe(
-        searchResult => searchResult.forEach(
-          id => this.api.getGame$(id).subscribe(
-            game => this.games.push(game)
-          )
+    this.search$.subscribe(
+      searchResult => searchResult.forEach(
+        id => this.api.getGame$(id).subscribe(
+          game => this.games.push(game),
+          err => console.error(err),
+          () => this.isLoading = false
         )
-      )
+      ),
+      err => console.error(err)
+    );
   }
 
 }
