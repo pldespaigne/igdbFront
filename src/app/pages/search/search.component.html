@@ -1,0 +1,19 @@
+
+<a mat-button routerLink=""><mat-icon>keyboard_backspace</mat-icon></a>
+
+<div>
+  <span fxLayout="row" fxLayoutAlign="space-evenly center">
+    <h3>Search Result for : {{search}}</h3>
+    <span>
+      <mat-form-field>
+        <input matInput [(ngModel)]="searchInput">
+      </mat-form-field>
+      <button mat-button (click)="getSearch(searchInput, 0)"><mat-icon>search</mat-icon></button>
+    </span>
+  </span>
+  <div fxLayout="row" fxLayoutAlign="space-evenly center">
+    <button fxFlex="2%" mat-button [disabled]="!canPrevious" (click)="getSearch(search, offset - 1)"><mat-icon>keyboard_arrow_left</mat-icon></button>
+    <app-game-thumb fxFlex="25%" *ngFor="let game of games" [game]="game"></app-game-thumb>
+    <button fxFlex="2%" mat-button [disabled]="!canNext" (click)="getSearch(search, offset + 1)"><mat-icon>keyboard_arrow_right</mat-icon></button>
+  </div>
+</div>

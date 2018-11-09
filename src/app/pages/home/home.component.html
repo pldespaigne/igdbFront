@@ -2,7 +2,15 @@
   <h1 fxFlexAlign="center"> Welcome to igdbFront 🎮</h1>
   <h2 fxFlexAlign="center">The web app made for exploring the <a href="https://igdb.github.io/api/" target="_blank" rel="noopener">igdb</a> API</h2>
 
-    <p *ngIf="(count$ | async) as count">Start exploring : {{count}} games</p>
+    <span fxLayout="row" fxLayoutAlign="space-evenly center">
+      <p *ngIf="(count$ | async) as count">Start exploring : {{count}} games</p>
+      <span>
+        <mat-form-field>
+          <input matInput [(ngModel)]="search">
+        </mat-form-field>
+        <a mat-button [routerLink]="'search/' + search"><mat-icon>search</mat-icon></a>
+      </span>
+    </span>
 
     <div fxLayout="row" fxLayoutAlign="space-evenly center">
 

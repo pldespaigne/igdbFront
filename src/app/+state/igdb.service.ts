@@ -71,4 +71,40 @@ export class IgdbService {
     );
   }
 
+  getSearch$(search: string, offset: number): Observable<number[]> {
+    console.log('GET /games/?search=' + search + '&offset=' + offset + '&limit=3 ...');
+    return this.http.get<Object[]>(this.url + '/games/?search=' + search + '&offset=' + offset + '&limit=3', this.getOptions()).pipe(
+      map(
+        res => {
+          console.log('...', res);
+          let ids: number[];
+          ids = res.map(res => res['id']);
+          return ids;
+        }
+      )
+    );
+  }
+
+  getGame$(id: number): Observable<Game> {
+    console.log('GET /games/' + id + ' ...');
+    return this.http.get<Game>(this.url + '/games/' + id, this.getOptions()).pipe(
+      map(
+        res => {
+          let game: Game;
+          let coverUrl = 'https://cdn4.iconfinder.com/data/icons/flatified/512/photos.png';
+          if (res[0]['cover']) coverUrl = 'https://images.igdb.com/igdb/image/upload/t_720p/' + res[0]['cover']['cloudinary_id'] + '.jpg'
+          game = {
+            id: res[0]['id'],
+            url: res[0]['url'],
+            name: res[0]['name'],
+            summary: res[0]['summary'] ? res[0]['summary'] : 'No summary available.',
+            cover: coverUrl
+          };
+          console.log('...', game);
+          return game;
+        }
+      )
+    );
+  }
+
 }

@@ -13,26 +13,23 @@ import { Game } from 'src/app/models/models';
 })
 export class HomeComponent implements OnInit {
 
-  // isApiok$: Observable<boolean>
   isLoading: boolean
   canPrevious: boolean
   canNext: boolean
   count$: Observable<number>
   game$: Observable<Game>
+  search: string
   
 
   constructor(private query: IgdbQuery, private api: IgdbService) { }
 
   ngOnInit() {
-    // this.isLoading = true;
     this.count$ = this.query.gamesCount$;
     this.count$.subscribe(
       count => {
         if(count == -1) this.api.gamesCount();
         else if(this.query.getSnapshot().game == null){
           let rand = Math.floor(Math.random() * count);
-          // if(rand == 0) this.canPrevious = false;
-          // if(rand == count) this.canNext = false;
           this.getGame(rand);
         } else {
           this.canPrevious = true;
@@ -48,21 +45,7 @@ export class HomeComponent implements OnInit {
     this.game$.subscribe(
       _ => this.isLoading = false
     );
-
-    // this.getGamesCount();
   }
-
-  // getGamesCount() {
-    // this.api.gamesCount$.subscribe(
-    //   (count: Count) => {
-    //     // console.log(data)
-    //     // this.isLoading = false;
-    //     this.count = count.count;
-    //     this.getGame(Math.floor(Math.random() * this.count));
-    //   },
-    //   (err) => console.error(err)
-    // );
-  // }
 
   getGame(id: number) {
     this.isLoading = true
@@ -71,13 +54,5 @@ export class HomeComponent implements OnInit {
     if(id == 1) this.canPrevious = false;
     if(id == this.query.getSnapshot().count) this.canNext = false;
     this.api.getGame(id);
-  //   this.api.getGame$(id).subscribe((game: Game) => {
-  //     this.isLoading = false;
-  //     this.game = game;
-  //     console.log(game);
-  //     // console.log(game.id);
-  //     // console.log(game.name);
-  //     // console.log(game.cover);
-  //   });
   }
 }

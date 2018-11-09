@@ -14,6 +14,7 @@ import { ApiKeyDialogComponent } from './pages/api-key-dialog/api-key-dialog.com
 import { GamePageComponent } from './pages/game-page/game-page.component';
 // import { IgdbService } from './+igdb/igdb.service';
 import { GameThumbComponent } from './components/game-thumb/game-thumb.component';
+import { SearchComponent } from './pages/search/search.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { GameThumbComponent } from './components/game-thumb/game-thumb.component
     ApikeyComponent,
     ApiKeyDialogComponent,
     GameThumbComponent,
-    GamePageComponent
+    GamePageComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
