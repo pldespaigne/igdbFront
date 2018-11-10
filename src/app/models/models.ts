@@ -1,3 +1,4 @@
+import { environment } from "src/environments/environment";
 
 export interface Game {
     id: number;
@@ -6,6 +7,25 @@ export interface Game {
     summary: string;
     cover: string;
     platforms: string[];
+}
+
+export function log(message: string, indent = 0, type = 'log') {
+    if(environment.verbose){
+        let msg = '🤖 : ';
+        for(let i = 0 ; i < indent ; i++) msg += '\t';
+        msg += message;
+        switch(type) {
+            case 'log':
+                console.log(msg);
+                break;
+            case 'warn':
+                console.warn(msg);
+                break;
+            case 'err':
+                console.error(msg);
+                break;
+        }
+    }
 }
 
 export function resolvePlatforms(platforms: number[]): string[]{

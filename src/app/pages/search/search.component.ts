@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IgdbService } from 'src/app/+state';
 import { Observable } from 'rxjs';
-import { Game } from 'src/app/models/models';
+import { Game, log } from 'src/app/models/models';
 
 @Component({
   selector: 'app-search',
@@ -28,13 +28,13 @@ export class SearchComponent implements OnInit {
     this.canNext = false;
     this.offset = 0;
     this.route.params.subscribe(params => {
-      console.log(params)
       this.search = params['search'];
       this.getSearch(this.search, this.offset);
     });
   }
 
   getSearch(search: string, offset: number){
+    log('searching ' + search + '...')
     this.isLoading = true;
     this.canPrevious = true;
     this.canNext = true;
@@ -56,11 +56,11 @@ export class SearchComponent implements OnInit {
             this.games.push(game);
             this.isLoading = false;
           },
-          err => console.error(err),
+          err => log(err, 1, 'err'),
           // () => this.isLoading = false
         )
       ),
-      err => console.error(err)
+      err => log(err, 1, 'err')
     );
   }
 

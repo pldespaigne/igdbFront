@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Game } from 'src/app/models/models';
+import { Game, log } from 'src/app/models/models';
 import { IgdbQuery } from 'src/app/+state/igdb.query';
 import { ActivatedRoute } from '@angular/router';
 import { IgdbService } from 'src/app/+state';
@@ -23,13 +23,13 @@ export class GamePageComponent implements OnInit {
     this.game = this.query.getSnapshot().game;
 
     if(!this.game){
-      console.log('no game, need to query ', this.routeId)
+      log('no game, need to query '+ this.routeId)
       this.loadGame();
     } else if(this.game && this.game.id != this.routeId){
-      console.log('wrong game in store, need to query ', this.routeId);
+      log('wrong game in store, need to query '+ this.routeId);
       this.loadGame();
     } else if(this.game && this.game.id == this.routeId){
-      console.log(this.game);
+      log('' + this.game.id);
       this.isLoading = false;
     }
   }
