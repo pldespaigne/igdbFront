@@ -7,6 +7,7 @@ export interface IgdbState {
   ok: boolean;
   game: Game;
   count: number;
+  games: Game[];
 }
 
 export function createInitialState(): IgdbState {
@@ -14,7 +15,8 @@ export function createInitialState(): IgdbState {
     key: null,
     ok: false,
     game: null,
-    count: -1
+    count: -1,
+    games: []
   };
 }
 
@@ -25,6 +27,5 @@ export class IgdbStore extends Store<IgdbState> {
   constructor() {
     super(createInitialState());
   }
-
 }
 

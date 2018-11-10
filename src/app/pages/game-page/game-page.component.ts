@@ -36,8 +36,14 @@ export class GamePageComponent implements OnInit {
 
   loadGame() {
     this.isLoading = true;
-    this.api.getGame(this.routeId);
-    this.query.storedGame$.subscribe(
+    // this.api.getGame(this.routeId);
+    // this.query.storedGame$.subscribe(
+    //   game => {
+    //     this.game = game
+    //     if(game.id == this.routeId)this.isLoading = false
+    //   }
+    // )
+    this.api.getGame$(this.routeId).subscribe(
       game => {
         this.game = game
         if(game.id == this.routeId)this.isLoading = false

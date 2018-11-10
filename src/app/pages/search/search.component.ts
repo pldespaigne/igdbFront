@@ -52,9 +52,12 @@ export class SearchComponent implements OnInit {
     this.search$.subscribe(
       searchResult => searchResult.forEach(
         id => this.api.getGame$(id).subscribe(
-          game => this.games.push(game),
+          game => {
+            this.games.push(game);
+            this.isLoading = false;
+          },
           err => console.error(err),
-          () => this.isLoading = false
+          // () => this.isLoading = false
         )
       ),
       err => console.error(err)
