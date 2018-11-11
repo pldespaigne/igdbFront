@@ -1,5 +1,5 @@
 
-<a mat-button routerLink=""><mat-icon>keyboard_backspace</mat-icon></a>
+<a mat-raised-button routerLink="" color="accent"><mat-icon>keyboard_backspace</mat-icon></a>
 
 <div fxLayout="column">
   <span *ngIf="isLoading; then displayLoading; else displayGame"></span>
@@ -17,7 +17,7 @@
       <div fxFlex="50%" fxFlex.gt-sm="25%">
         <p>{{game.summary}}</p>
         <mat-chip-list>
-          <mat-chip *ngFor="let platform of game.platforms">{{platform}}</mat-chip>
+          <mat-chip color="primary" selected class="txt-white" *ngFor="let platform of game.platforms">{{platform}}</mat-chip>
         </mat-chip-list>
       </div>
       <img fxFlex="50%" fxFlex.gt-sm="25%" [src]="game.cover">

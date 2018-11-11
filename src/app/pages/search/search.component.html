@@ -1,5 +1,5 @@
 
-<a mat-button routerLink=""><mat-icon>keyboard_backspace</mat-icon></a>
+<a mat-raised-button routerLink="" color="accent"><mat-icon>keyboard_backspace</mat-icon></a>
 
 <div>
   <span fxLayout="row" fxLayoutAlign="space-evenly center">
@@ -15,11 +15,11 @@
     <span *ngIf="isLoading; then displayLoading; else displaySearch"></span>
 
     <ng-template #displaySearch>
-      <button fxFlex="2%" mat-button [disabled]="!canPrevious" (click)="getSearch(search, offset - 1)"><mat-icon>keyboard_arrow_left</mat-icon></button>
+      <button fxFlex="2%" mat-raised-button colro="primary" [disabled]="!canPrevious" (click)="getSearch(search, offset - 1)"><mat-icon>keyboard_arrow_left</mat-icon></button>
       <div fxFlex="70%" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-evenly center">
         <app-game-thumb fxFlex="33%" *ngFor="let game of games" [game]="game"></app-game-thumb>
       </div>
-      <button fxFlex="2%" mat-button [disabled]="!canNext" (click)="getSearch(search, offset + 1)"><mat-icon>keyboard_arrow_right</mat-icon></button>
+      <button fxFlex="2%" mat-raised-button color="primary" [disabled]="!canNext" (click)="getSearch(search, offset + 1)"><mat-icon>keyboard_arrow_right</mat-icon></button>
     </ng-template>
 
     <ng-template #displayLoading>

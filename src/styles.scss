@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./app/material/orange-blue.scss";
 
 html, body {
     margin: 0;
@@ -19,6 +20,10 @@ html, body {
     text-align: center;
 }
 
+.txt-white {
+    color: #ffffff !important;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
@@ -26,3 +31,16 @@ html, body {
 .no-underline {
     text-decoration: none;
 }
+
+.bk-primary {
+    background-color: #ff9800;
+}
+
+.bk-accent {
+    background-color: #18FFFF;
+}
+
+.bk-neutral {
+    background-color: #e0e0e0;
+}
+

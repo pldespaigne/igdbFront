@@ -8,7 +8,7 @@
         <mat-form-field>
           <input matInput [(ngModel)]="search">
         </mat-form-field>
-        <a mat-button [routerLink]="'search/' + search"><mat-icon>search</mat-icon></a>
+        <a mat-raised-button [routerLink]="'search/' + search" color="accent"><mat-icon>search</mat-icon></a>
       </span>
     </span>
 
@@ -17,9 +17,9 @@
       <span *ngIf="isLoading; then displayLoading; else displayGame"></span>
       <ng-template #displayGame>
         <div *ngIf="(game$ | async) as game" fxLayout="row" fxLayoutAlign="space-evenly center">
-          <button mat-button [disabled]="!canPrevious" (click)="getGame(game.id - 1)"><mat-icon>keyboard_arrow_left</mat-icon></button>
+          <button mat-raised-button [disabled]="!canPrevious" (click)="getGame(game.id - 1)" color="primary"><mat-icon>keyboard_arrow_left</mat-icon></button>
           <app-game-thumb fxFlexAlign="center" fxFlex.gt-md="50%" [game]="game$ | async"></app-game-thumb>
-          <button mat-button [disabled]="!canNext" (click)="getGame(game.id + 1)"><mat-icon>keyboard_arrow_right</mat-icon></button>
+          <button mat-raised-button [disabled]="!canNext" (click)="getGame(game.id + 1)" color="primary"><mat-icon>keyboard_arrow_right</mat-icon></button>
         </div>
       </ng-template>
 

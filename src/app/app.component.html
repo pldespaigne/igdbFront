@@ -1,8 +1,8 @@
-<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" color="primary">
   <a routerLink="" class="no-underline">igdbFront 🎮</a>
   <span>
     <app-apikey [apikey]="apikey$ | async"></app-apikey>
-    <button mat-button (click)="openApiKeyDialog()"><mat-icon>edit</mat-icon></button>
+    <button mat-raised-button (click)="openApiKeyDialog()" color="accent"><mat-icon>edit</mat-icon></button>
   </span>
 </mat-toolbar>
 
@@ -19,6 +19,6 @@
   </div>
 </ng-template>
 
-<footer fxLayout="row" fxLayoutAlign="center center">
+<footer fxLayout="row" fxLayoutAlign="center center" class="bk-neutral">
   <p>made with ❤️ by <a href="https://twitter.com/pldespaigne" target="_blank" rel="noopener">Pierre-Louis Despaigne</a></p>
 </footer>
