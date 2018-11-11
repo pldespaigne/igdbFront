@@ -1,4 +1,30 @@
-# IgdbFront
+# igdbFront 🎮
+
+This project is a simple Single Page App to browse the [IternetGameDataBase](https://www.igdb.com).
+
+I made it to learn the Angular Framework.
+
+You can try it with this [live demo](https://igdbfront.surge.sh/) !
+
+## 🔧 Functionalities
+
+ * ⚠️ this project is client-side only, so you will need to login with an igdb API key ⚠️
+ * 🏡 the [home page](https://igdbfront.surge.sh/) dispaly a random game and let you explore the game database
+ * 🔍 you can [search](https://igdbfront.surge.sh/search/rayman) for specific games
+ * 🎮 you can click on a [game](https://igdbfront.surge.sh/game/121) to see more information about it
+ * 📜 I have used [Akita](https://github.com/datorama/akita) to handle the application state
+ * 💾 the state persist in the browser local storage, so you can quit the app and comme back later without re login
+ * 🗂 I implemented a cache mechanism in order to save api queries (the app will not query the api if the game have been visited previously)
+ * 🅰️ I used [Angular Material](https://material.angular.io/) and [Angular flex Layout](https://github.com/angular/flex-layout) for the design and responsiveness
+ * ⛔️ I used the [CORS Anywhere](https://github.com/Rob--W/cors-anywhere/) proxy in order to bypass CORS headers setup by igdb to restrict free api keys 😉
+ 
+##  👨‍💻 Author
+* Pierre-Louis Despaigne ([@pldespaigne](https://twitter.com/pldespaigne))
+
+## ⚖️ License
+* [GNU v3](/LICENSE)
+
+---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
