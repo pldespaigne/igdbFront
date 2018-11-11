@@ -46,7 +46,7 @@ export class GamePageComponent implements OnInit {
     this.api.getGame$(this.routeId).subscribe(
       game => {
         this.game = game
-        if(game.id == this.routeId)this.isLoading = false
+        if(game.id == this.routeId || this.game.id == 0)this.isLoading = false
       }
     )
   }

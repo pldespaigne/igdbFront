@@ -97,12 +97,23 @@ export class IgdbService {
       return this.http.get<Game>(query, this.getOptions()).pipe(
         map(
           res => {
+            if(!res[0]) {
+              log('This game doesn\'t esxist anymore : ' + JSON.stringify(res), 0, 'err');
+              return {
+                id: 0,
+                url: '',
+                name: 'Error : this game doesn\'t exist anymore 😥',
+                summary: 'Error : this game doesn\'t exist anymore 😥',
+                cover: 'https://cdn4.iconfinder.com/data/icons/flatified/512/photos.png',
+                platforms: []
+              };
+            }
             let game: Game;
             let coverUrl = 'https://cdn4.iconfinder.com/data/icons/flatified/512/photos.png';
             if (res[0]['cover']) coverUrl = 'https://images.igdb.com/igdb/image/upload/t_720p/' + res[0]['cover']['cloudinary_id'] + '.jpg';
             let platforms: string [];
-          platforms = [];
-          if(res[0]['platforms']) platforms = resolvePlatforms(res[0]['platforms']);
+            platforms = [];
+            if(res[0]['platforms']) platforms = resolvePlatforms(res[0]['platforms']);
             game = {
               id: res[0]['id'],
               url: res[0]['url'],

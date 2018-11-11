@@ -14,11 +14,13 @@
       <p>#{{game.id}}</p>
     </span>
     <div fxFlexAlign="center" fxLayout="row" fxLayoutAlign="space-evenly start">
-      <div fxFlex="50%">
+      <div fxFlex="50%" fxFlex.gt-sm="25%">
         <p>{{game.summary}}</p>
-        <span *ngFor="let platform of game.platforms">{{platform}}, </span>
+        <mat-chip-list>
+          <mat-chip *ngFor="let platform of game.platforms">{{platform}}</mat-chip>
+        </mat-chip-list>
       </div>
-      <img fxFlex="50%" [src]="game.cover">
+      <img fxFlex="50%" fxFlex.gt-sm="25%" [src]="game.cover">
     </div>
   </ng-template>
 </div>

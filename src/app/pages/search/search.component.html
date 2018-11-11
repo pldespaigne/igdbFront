@@ -11,12 +11,14 @@
       <button mat-button (click)="getSearch(searchInput, 0)"><mat-icon>search</mat-icon></button>
     </span>
   </span>
-  <div fxLayout="row" fxLayoutAlign="space-evenly center">
+  <div fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutAlign.lt-md="space-evenly start">
     <span *ngIf="isLoading; then displayLoading; else displaySearch"></span>
 
     <ng-template #displaySearch>
       <button fxFlex="2%" mat-button [disabled]="!canPrevious" (click)="getSearch(search, offset - 1)"><mat-icon>keyboard_arrow_left</mat-icon></button>
-      <app-game-thumb fxFlex="25%" *ngFor="let game of games" [game]="game"></app-game-thumb>
+      <div fxFlex="70%" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-evenly center">
+        <app-game-thumb fxFlex="33%" *ngFor="let game of games" [game]="game"></app-game-thumb>
+      </div>
       <button fxFlex="2%" mat-button [disabled]="!canNext" (click)="getSearch(search, offset + 1)"><mat-icon>keyboard_arrow_right</mat-icon></button>
     </ng-template>
 

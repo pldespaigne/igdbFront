@@ -1,6 +1,6 @@
 <div fxLayout="column">
-  <h1 fxFlexAlign="center"> Welcome to igdbFront 🎮</h1>
-  <h2 fxFlexAlign="center">The web app made for exploring the <a href="https://igdb.github.io/api/" target="_blank" rel="noopener">igdb</a> API</h2>
+  <h1 fxFlexAlign="center" class="txt-center"> Welcome to igdbFront 🎮</h1>
+  <h2 fxFlexAlign="center" class="txt-center">The web app made for exploring the <a href="https://igdb.github.io/api/" target="_blank" rel="noopener">igdb</a> API</h2>
 
     <span fxLayout="row" fxLayoutAlign="space-evenly center">
       <p *ngIf="(count$ | async) as count">Start exploring : {{count}} games</p>
@@ -18,7 +18,7 @@
       <ng-template #displayGame>
         <div *ngIf="(game$ | async) as game" fxLayout="row" fxLayoutAlign="space-evenly center">
           <button mat-button [disabled]="!canPrevious" (click)="getGame(game.id - 1)"><mat-icon>keyboard_arrow_left</mat-icon></button>
-          <app-game-thumb [game]="game$ | async"></app-game-thumb>
+          <app-game-thumb fxFlexAlign="center" fxFlex.gt-md="50%" [game]="game$ | async"></app-game-thumb>
           <button mat-button [disabled]="!canNext" (click)="getGame(game.id + 1)"><mat-icon>keyboard_arrow_right</mat-icon></button>
         </div>
       </ng-template>
